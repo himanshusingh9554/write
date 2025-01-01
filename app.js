@@ -35,6 +35,14 @@ const server = http.createServer((req,res)=>{
                     res.end();
                 })
             })
+        }else{
+            if(req.url=='/read'){
+                fs.readFile('formValues.txt',(err,data)=>{
+                    console.log(data.toString());
+                    res.end(`
+                        <h1>${data.toString()}</h1>`);
+                })
+            }
         }
     }
 });
